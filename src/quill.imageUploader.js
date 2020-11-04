@@ -85,9 +85,8 @@ class ImageUploader {
 
     handlePaste(evt) {
         let clipboard = evt.clipboardData || window.clipboardData;
-
         // IE 11 is .files other browsers are .items
-        if (clipboard && (clipboard.items || clipboard.files)) {
+        if (clipboard && (clipboard.items || clipboard.files) && clipboard.getData('text').length === 0) {
             let items = clipboard.items || clipboard.files;
             const IMAGE_MIME_REGEX = /^image\/(jpe?g|gif|png|svg|webp)$/i;
 
